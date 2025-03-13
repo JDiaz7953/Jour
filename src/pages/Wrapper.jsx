@@ -19,8 +19,13 @@ const Wrapper = ({ children }) => {
   }, []);
 
   // If an autheticated user allow access to the page else redirect to login
-  if(loading) {return <div>Loading...</div>;} 
-  else {if(authenticated) {return <>{children}</>;}}
+  if (loading) {
+    return <div>Loading...</div>;
+  } else {
+    if (authenticated) {
+      return <>{children}</>;
+    }
+  }
   return <Navigate to="/login" />;
 };
 

@@ -3,10 +3,10 @@ import { supabase } from "../supabase-client";
 import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("")
+  const [message, setMessage] = useState("");
 
   //Handels users logging into their account
   const handleSubmit = async (event) => {
@@ -17,28 +17,37 @@ const Login = () => {
     });
 
     if (error) {
-        setEmail("")
-        setPassword("")
+      setEmail("");
+      setPassword("");
       setMessage(error.message);
       return;
     }
 
     if (data) {
       console.log("User Created");
-      navigate('/dashboard')
+      navigate("/dashboard");
     }
   };
 
   return (
-    <div className=" flex min-h-screen justify-center">
-      <div>
-        <div className="flex justify-center ">
-          <div className="w-120 ml-7">
-          <img className="" src="src\assets\Jour-01.jpg" alt="" />
+    <div>
+      <div className="flex min-h-screen justify-center gap-3 items-center">
+        <div className="">
+          <div className="w-110 ml-7 mb-45">
+            <img
+              className="p-3 mb-3 z-[-1] bottom-0 "
+              src="src\assets\Jour-03.jpg"
+              alt=""
+            />
+            <h3 className="text-3xl font- ml-8">
+              Plan and share your next adventure with friends using Jour
+            </h3>
           </div>
         </div>
-        <div className="border-2 p-3 shadow-2xl rounded-3xl w-120 h-100 ml-7 ">
-          <h2 className="p-5 text-3xl font-semibold text-slate-800 inline-block ">Login</h2>
+        <div className="border-2 p-3 shadow-2xl rounded-3xl w-120 h-110 ml-7 ">
+          <h2 className="p-5 text-3xl font-semibold text-slate-800 inline-block ">
+            Login
+          </h2>
           {message && <p>{message}</p>}
           <form onSubmit={handleSubmit}>
             <div className="flex justify-around mt-4 ">
@@ -62,13 +71,29 @@ const Login = () => {
               />
             </div>
             <div className="flex w-100 justify-center mt-5 ml-4 mb-4">
-              <button className="bg-slate-800 text-white hover:bg-amber-600   cursor-pointer  rounded-xl w-50 p-1" type="submit">
+              <button
+                className="bg-slate-800 text-white hover:bg-amber-600   cursor-pointer  rounded-xl w-50 p-1"
+                type="submit"
+              >
                 Login
               </button>
             </div>
           </form>
-          <span className="text-sm">no account?</span> <Link className="text-sm underline text-slate-800 hover:text-amber-600 " to="/"> Create one</Link>
-          <br /><Link className="text-sm underline text-slate-800 hover:text-amber-600  " >forgot password?</Link>
+          <span className="text-sm">no account?</span>{" "}
+          <Link
+            className="text-sm underline text-slate-800 hover:text-amber-600 "
+            to="/"
+          >
+            {" "}
+            Create one
+          </Link>
+          <br />
+          <Link
+            to="/forgot-password"
+            className="text-sm underline text-slate-800 hover:text-amber-600  "
+          >
+            forgot password?
+          </Link>
         </div>
       </div>
     </div>
