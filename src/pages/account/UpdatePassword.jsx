@@ -3,7 +3,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const UpdatePassword = () => {
-    const passwordConstraints =
+  const passwordConstraints =
     /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}/;
   const navigate = useNavigate();
   const [password, setPassword] = useState("");
@@ -13,12 +13,12 @@ const UpdatePassword = () => {
   const handleUpdatePassword = async (event) => {
     event.preventDefault();
     if (!passwordConstraints.test(password)) {
-        setErrorMessage(
-          "Make sure your password includes  1 upppercase, 1 number, 1 special character "
-        );
-        setPassword("")
-        return;
-      }
+      setErrorMessage(
+        "Make sure your password includes  1 upppercase, 1 number, 1 special character "
+      );
+      setPassword("");
+      return;
+    }
 
     const { error, data } = await supabase.auth.updateUser({
       password: password,
@@ -26,7 +26,7 @@ const UpdatePassword = () => {
 
     if (error) {
       setErrorMessage("Error from supabase try again!");
-      setPassword("")
+      setPassword("");
     }
 
     if (data) {

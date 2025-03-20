@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
-import Dashboard from "./pages/Dashboard";
+import Profile from "./pages/Profile";
 import Wrapper from "./pages/wrapper";
 import ForgotPassword from "./pages/ForgotPassword";
 import UpdatePassword from "./pages/account/UpdatePassword";
@@ -19,7 +19,7 @@ function App() {
             path="/dashboard"
             element={
               <Wrapper>
-                <Dashboard />
+                <Profile />
               </Wrapper>
             }
           />
