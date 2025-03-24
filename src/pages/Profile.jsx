@@ -16,35 +16,29 @@ const Profile = () => {
 
   return (
     <>
-      <div className=" flex flex-row">
-
-
-        <div className="flex flex-col h-[100rem] w-[25rem] bg-white border-r-1 border-black shadow-4xl ">
-        {/* <button
-          className="bg-blue-600 rounded-2xl h-[10rem] "
-          onClick={handleSignOut}
-        >
-          Sign out
-        </button> */}
-        <div className="flex">
-          <img src="src/assets/Jour-03.jpg" alt="" />
+      <main className="flex w-screen h-screen justify-center">
+        <div className="w-225 ">
+          <nav className="w-auto mb-30">
+            <ul className="m-4 flex justify-between ">
+              <form action="">
+                <input
+                  className="border-slate-800 border-2 rounded-3xl p-3 w-2xl "
+                  type="text"
+                  placeholder="Find you next adventure here  "
+                />
+              </form>
+              <li>
+                <button onClick={handleSignOut} className="bg-slate-900 text-white rounded-2xl p-2 justify-center mt-2 ">
+                  sign Out
+                </button>
+              </li>
+            </ul>
+          </nav>
+          <article>
+            <h2 className="text-3xl font-semibold ">Current Bucket List</h2>
+          </article>
         </div>
-        <div className="p-2 text-lg mt-10 ml-5">
-          Home
-        </div>
-        <div className="p-2 text-lg ml-5">
-          Add to Bucket List
-        </div>
-        <div className="p-2 text-lg ml-5">
-          Plan Your Next Trip
-        </div>
-        <div className="p-2 text-lg ml-5">
-          Profile
-        </div>
-      </div>
-      dfiuhd
-      </div>
-  
+      </main>
     </>
   );
 };
