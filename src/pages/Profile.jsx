@@ -1,13 +1,8 @@
 import { supabase } from "../supabase-client";
 import { useNavigate } from "react-router-dom";
-
-
-
-
+import Navbar from "../components/navbar";
 
 const Profile = () => {
-  
-  
   const navigate = useNavigate();
 
   //Allows users to log out of their account
@@ -22,25 +17,36 @@ const Profile = () => {
 
   return (
     <>
-      <main className="flex w-screen h-screen justify-center">
-        <div className="w-225 ">
-          <nav className="w-auto mb-30">
-            <ul className="m-4 flex justify-between ">
-              <div>
-                <button className="bg-slate-900 text-white rounded-2xl p-2 justify-center mt-2 " >
-                  add to bucket list
-                </button>
-              </div>
-              <li>
-                <button onClick={handleSignOut} className="bg-slate-900 text-white rounded-2xl p-2 justify-center mt-2 ">
-                  sign Out
-                </button>
-              </li>
-            </ul>
-          </nav>
-          <article>
-            <h2 className="text-3xl font-semibold ">Current Bucket List</h2>
-          </article>
+      <main className="flex w-screen h-screen">
+        <div className="w-200">
+          <div className="flex p-10 justify-between items-center">
+            <h1 className="text-2xl font-semibold">Your Future Adventures</h1>
+            <button className="flex items-center justify-center bg-slate-900 rounded-md hover:bg-sky-900 w-8 h-8" >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="size-6 text-white"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M12 4.5v15m7.5-7.5h-15"
+                />
+              </svg>
+            </button>
+          </div>
+          <div className="p-10">Add your dream location Here!</div>
+          {/* <div>loop through the database displaying trips from the database</div> */}
+          <div className="p-10">
+            <h2 className="text-xl font-semibold">Add a New Place:</h2>
+            <div className="flex shadow-2xl bg-white">
+              <input type="text" placeholder="Add a New Place" className=" shadow-sm user-select:none focus:outline-none w-100 h-7 p-3 border-gray-300 border" />
+              <button className="text-white bg-slate-900 hover:bg-sky-900 h-7 w-15 shadow-sm">Add</button>
+            </div>
+          </div>
         </div>
       </main>
     </>
@@ -48,3 +54,5 @@ const Profile = () => {
 };
 
 export default Profile;
+
+

@@ -10,9 +10,9 @@ import Navbar from "./components/navbar";
 
 function App() {
   return (
-    <>
+    <div className="flex">
       <Navbar />
-      {/* <Router>
+      <Router>
         <Routes>
           <Route exact path="/" element={<SignUp />} />
           <Route exact path="/login" element={<Login />} />
@@ -32,8 +32,8 @@ function App() {
             element={<UpdatePassword />}
           />
         </Routes>
-      </Router> */}
-    </>
+      </Router>
+    </div>
   );
 }
 
