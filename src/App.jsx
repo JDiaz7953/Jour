@@ -6,11 +6,13 @@ import Profile from "./pages/Profile";
 import Wrapper from "./pages/wrapper";
 import ForgotPassword from "./pages/ForgotPassword";
 import UpdatePassword from "./pages/account/UpdatePassword";
+import Navbar from "./components/navbar";
 
 function App() {
   return (
     <>
-      <Router>
+      <Navbar />
+      {/* <Router>
         <Routes>
           <Route exact path="/" element={<SignUp />} />
           <Route exact path="/login" element={<Login />} />
@@ -30,7 +32,7 @@ function App() {
             element={<UpdatePassword />}
           />
         </Routes>
-      </Router>
+      </Router> */}
     </>
   );
 }

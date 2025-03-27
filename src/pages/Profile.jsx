@@ -1,7 +1,13 @@
 import { supabase } from "../supabase-client";
 import { useNavigate } from "react-router-dom";
 
+
+
+
+
 const Profile = () => {
+  
+  
   const navigate = useNavigate();
 
   //Allows users to log out of their account
@@ -20,13 +26,11 @@ const Profile = () => {
         <div className="w-225 ">
           <nav className="w-auto mb-30">
             <ul className="m-4 flex justify-between ">
-              <form action="">
-                <input
-                  className="border-slate-800 border-2 rounded-3xl p-3 w-2xl "
-                  type="text"
-                  placeholder="Find you next adventure here  "
-                />
-              </form>
+              <div>
+                <button className="bg-slate-900 text-white rounded-2xl p-2 justify-center mt-2 " >
+                  add to bucket list
+                </button>
+              </div>
               <li>
                 <button onClick={handleSignOut} className="bg-slate-900 text-white rounded-2xl p-2 justify-center mt-2 ">
                   sign Out
