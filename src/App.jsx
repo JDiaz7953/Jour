@@ -7,8 +7,12 @@ import Wrapper from "./pages/wrapper";
 import ForgotPassword from "./pages/ForgotPassword";
 import UpdatePassword from "./pages/account/UpdatePassword";
 import Navbar from "./components/navbar";
+import { useState } from "react";
 
 function App() {
+  const [open, setOpen] = useState(false)
+
+
   return (
     <div className="flex">
       <Navbar />
