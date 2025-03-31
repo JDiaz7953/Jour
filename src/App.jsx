@@ -10,12 +10,11 @@ import Navbar from "./components/navbar";
 import { useState } from "react";
 
 function App() {
-  const [open, setOpen] = useState(false)
 
 
   return (
-    <div className="flex">
-      <Navbar />
+    <div className="flex justify-center">
+    
       <Router>
         <Routes>
           <Route exact path="/" element={<SignUp />} />

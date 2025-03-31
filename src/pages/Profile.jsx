@@ -1,12 +1,36 @@
 import { supabase } from "../supabase-client";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/navbar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "../components/Modal";
 
-const Profile = () => {
+//TO DO: -Make Sure to Understand the code currently developed, -Make it so when a user adds a trip its updated instantly, -User can remove trips
+// code to review Supabase, modal code
+
+const Profile = ({ children }) => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
+  const [trips, setTrips] = useState([]);
+
+  useEffect(() => {
+    const fetchTrips = async () => {
+      const {
+        data: { user },
+        error: userError,
+      } = await supabase.auth.getUser();
+
+      //error handeling
+
+      //getting users data
+      const { data, error } = await supabase
+        .from("trips")
+        .select("*")
+        .eq("user_id", user.id);
+
+      setTrips(data);
+    };
+    fetchTrips();
+  }, []);
 
   //Allows users to log out of their account
   const handleSignOut = async () => {
@@ -21,9 +45,13 @@ const Profile = () => {
   return (
     <>
       <main className="flex w-screen h-screen">
+        <Navbar className={"shadow-2xl"} />
         <div className="w-200">
           <div className="flex p-10 justify-between items-center">
-            <h1 className="text-2xl font-semibold">Your Future Adventures</h1>
+            <div className="flex ">
+            <img src="src\assets\icons8-airplane-48.png" alt="" />
+            <h1 className="text-2xl font-semibold ml-10">Your Future Adventures</h1>
+            </div>
             <Modal open={open} handleClose={() => setOpen(false)} />
             <button
               onClick={() => setOpen(true)}
@@ -45,21 +73,21 @@ const Profile = () => {
               </svg>
             </button>
           </div>
-          <div className="p-10">Add your dream location Here!</div>
-          {/* <div>loop through the database displaying trips from the database</div> */}
-          <div className="p-10">
-            <h2 className="text-xl font-semibold">Add a New Place:</h2>
-            <div className="flex shadow-2xl bg-white">
-              <input
-                type="text"
-                placeholder="Add a New Place"
-                className=" shadow-sm user-select:none focus:outline-none w-100 h-7 p-3 border-gray-300 border"
-              />
-              <button className="text-white bg-slate-900 hover:bg-sky-900 h-7 w-15 shadow-sm">
-                Add
-              </button>
-            </div>
-          </div>
+          {!trips ? (
+            <p>Add Your Next Adventure!</p>
+          ) : (
+            <ul className="ml-9">
+              {trips.map((trip) => (
+                <li
+                  key={trip.id}
+                  className="mb-2 bg-white border p-10 w-110 h-30 shadow-lg rounded-2xl"
+                >
+                  <strong>{trip.title}</strong> :<p>{trip.description}</p>
+                </li>
+              ))}
+            </ul>
+          )}
+          <div className="p-10"></div>
         </div>
       </main>
     </>

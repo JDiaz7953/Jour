@@ -51,20 +51,35 @@ const SignUp = () => {
       const userId = data.user.id;
 
       //Updates users name in auth database
-      const { error: updateError } = await supabase
-        .from("auth.users")
-        .update({ display_name: `${firstName} ${lastName}` })
-        .eq("id", userId);
+      // const { error: updateError } = await supabase
+      //   .from("auth.users")
+      //   .update({ display_name: `${firstName} ${lastName}` })
+      //   .eq("id", userId);
 
-      if (updateError) {
-        console.error("Error updating displaying name:", updateError.message);
+      // if (updateError) {
+      //   console.error("Error updating displaying name:", updateError.message);
+      // } else {
+      //   console.log("Display name updated succesfully");
+      // }
+
+      // setMessage(
+      //   "Check your email to verify your account and start exploring Jour!"
+      // );
+
+      const { error: insertError } =  await supabase.from("users").insert({
+        id: userId,
+        name: firstName + " " + lastName,
+        email: email
+      })
+
+      if (insertError) {
+        console.error("Error inserting into users table:", insertError.message);
       } else {
-        console.log("Display name updated succesfully");
+        console.log("User added to users table!");
       }
 
-      setMessage(
-        "Check your email to verify your account and start exploring Jour!"
-      );
+
+
     }
   };
 
